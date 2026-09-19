@@ -27,10 +27,15 @@ const PALETTES: Record<TemplateStyle, { accent: string; accentDark: string; bg: 
   elegancki: { accent: '#b08d57', accentDark: '#7c6239', bg: '#faf8f5', font: "'Georgia', 'Times New Roman', serif" },
   nowoczesny: { accent: '#2563eb', accentDark: '#1e3a8a', bg: '#f5f7fb', font: "'Helvetica Neue', Arial, sans-serif" },
   rustykalny: { accent: '#7a5230', accentDark: '#4e3320', bg: '#f6f1e7', font: "'Palatino Linotype', Georgia, serif" },
+  wlasny: { accent: '#b08d57', accentDark: '#7c6239', bg: '#f7f7f7', font: "'Helvetica Neue', Arial, sans-serif" },
 }
 
 export function generatePropertyPage(data: PropertyData): string {
-  const palette = PALETTES[data.template]
+  const basePalette = PALETTES[data.template]
+  const palette =
+    data.template === 'wlasny'
+      ? { ...basePalette, accent: data.brandAccent || basePalette.accent, accentDark: data.brandAccentDark || basePalette.accentDark }
+      : basePalette
   const title = data.title.trim() || 'Dom na sprzedaż'
   const heroPhoto = data.photos[0]?.dataUrl
   const galleryPhotos = data.photos.slice(1)

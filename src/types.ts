@@ -4,7 +4,7 @@ export interface PropertyPhoto {
   caption: string
 }
 
-export type TemplateStyle = 'elegancki' | 'nowoczesny' | 'rustykalny'
+export type TemplateStyle = 'elegancki' | 'nowoczesny' | 'rustykalny' | 'wlasny'
 
 export interface PropertyData {
   title: string
@@ -26,6 +26,8 @@ export interface PropertyData {
   contactEmail: string
   photos: PropertyPhoto[]
   template: TemplateStyle
+  brandAccent: string
+  brandAccentDark: string
 }
 
 export const FEATURE_OPTIONS = [
@@ -65,4 +67,6 @@ export const emptyProperty: PropertyData = {
   contactEmail: '',
   photos: [],
   template: 'elegancki',
+  brandAccent: '#b08d57',
+  brandAccentDark: '#7c6239',
 }
